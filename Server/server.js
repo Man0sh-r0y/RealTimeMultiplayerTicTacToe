@@ -1,16 +1,63 @@
-const { createServer } = require("http");
-const { Server } = require("socket.io");
+// const { createServer } = require("http");
+// const { Server } = require("socket.io");
 const dotenv = require('dotenv');
+const path = require('path');
+const express = require("express");
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
 dotenv.config();
+const app = express();
+app.use(express.json()); // to accept json data
 
-const httpServer = createServer();
+const PORT = process.env.PORT;
 
-const io = new Server(httpServer, {
-  cors: process.env.CLIENT_URL,
+const server = app.listen(PORT, () => {
+  console.log(`Server running on PORT ${PORT}...`)
 });
+
+app.use(cookieParser());
+app.use(
+  cors({
+      origin: "*",
+      credentials: true,
+  })
+)
+
+
+// const httpServer = createServer();
+
+// const io = new Server(httpServer, {
+//   cors: "*",
+// });
+
+// ---Deployment Code start----
+const __dirname1 = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "../dist")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname1, "../dist", "index.html"))
+  );
+} 
+else {
+  app.get("/", (req, res) => {
+    res.send("API is running..");
+  });
+}
+
+// ---Deployment Code end----
 
 const allUsers = {};
 const allRooms = [];
+
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    credentials: true,
+  },
+});
 
 io.on("connection", (socket) => {
   allUsers[socket.id] = {
@@ -85,4 +132,4 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(process.env.PORT);
+// httpServer.listen(process.env.PORT);
