@@ -2,9 +2,10 @@
   "scripts": {
     "dev": "nodemon server.js",
     "build": "npm install && cd .. && npm install && npm run build",
-    "start": "concurrently \"npm run dev\" \"cd .. && npm run dev\""
+    "start": "concurrently \"npm run dev\" \"cd .. && npm start\""
   },
   "dependencies": {
+    "concurrently": "^9.1.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -12,8 +13,5 @@
     "http": "^0.0.1-security",
     "nodemon": "^3.0.2",
     "socket.io": "^4.7.3"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.2"
   }
 }

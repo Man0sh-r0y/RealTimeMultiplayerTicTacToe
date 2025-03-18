@@ -128,7 +128,7 @@ const App = () => {
     const username = result.value;
     setPlayerName(username);
 
-    const socketURL = import.meta.env.VITE_APP_SOCKETURL || "http://localhost:3000";
+    const socketURL = "https://dummy-vwxt.onrender.com";
 
     const newSocket = io(socketURL, {
       autoConnect: true,

@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 app.use(express.json()); // to accept json data
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const server = app.listen(PORT, () => {
   console.log(`Server running on PORT ${PORT}...`)
@@ -34,10 +34,10 @@ app.use(
 const __dirname1 = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, "../dist")));
+  app.use(express.static(path.join(__dirname1, "../build")));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "../dist", "index.html"))
+    res.sendFile(path.resolve(__dirname1, "../build", "index.html"))
   );
 } 
 else {
@@ -53,7 +53,7 @@ const allRooms = [];
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "http://localhost:3000",
     credentials: true,
   },
 });
