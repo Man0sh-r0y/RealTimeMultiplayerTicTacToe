@@ -128,7 +128,9 @@ const App = () => {
     const username = result.value;
     setPlayerName(username);
 
-    const newSocket = io(import.meta.env.VITE_APP_SOCKETURL, {
+    const socketURL = import.meta.env.VITE_APP_SOCKETURL || "http://localhost:3000";
+
+    const newSocket = io(socketURL, {
       autoConnect: true,
     });
 
