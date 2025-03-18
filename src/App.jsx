@@ -128,7 +128,7 @@ const App = () => {
     const username = result.value;
     setPlayerName(username);
 
-    const socketURL = "https://dummy-vwxt.onrender.com";
+    const socketURL = "https://realtimemultiplayertictactoe.onrender.com";
 
     const newSocket = io(socketURL, {
       autoConnect: true,
