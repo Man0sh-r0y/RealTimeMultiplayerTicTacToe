@@ -2,6 +2,8 @@
 
 This project is a real-time Two Player **Tic-Tac-Toe** game built with  **React.js, Socket.io, and Express.js** . Follow the steps below to run the game on your local machine.
 
+Live Link: [Go to Play](https://realtimemultiplayertictactoe.onrender.com/)
+
 ## **🛠️ Steps to Run Locally**
 
 ### **1️⃣ Clone the Repository**
