@@ -128,8 +128,8 @@ const App = () => {
     const username = result.value;
     setPlayerName(username);
 
-    //const socketURL = "https://realtimemultiplayertictactoe.onrender.com";
-    const socketURL = "http://localhost:5000"; // socketURL for localHost
+    const socketURL = "https://realtimemultiplayertictactoe.onrender.com";
+    //const socketURL = "http://localhost:5000"; // socketURL for localHost
 
     const newSocket = io(socketURL, {
       autoConnect: true,
