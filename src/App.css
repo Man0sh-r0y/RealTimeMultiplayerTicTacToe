@@ -19,7 +19,7 @@
 }
 
 .water-background {
-  background-color: #4b495f;
+  background-color: #5435ef;
 }
 
 .game-heading {
@@ -54,7 +54,7 @@
   width: 120px;
   background-color: red;
   /* border-bottom-left-radius: 50px; */
-  background-color: #4b495f;
+  background-color: #5d50f3;
   /* border-top-right-radius: 50px; */
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -80,9 +80,9 @@
 }
 
 .current-move-cross {
-  background-color: #3fa7f0 !important;
+  background-color: #8807c8 !important;
 }
 
 .current-move-circle {
-  background-color: #dd7f9f !important;
+  background-color: #8807c8 !important;
 }
