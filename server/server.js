@@ -65,8 +65,11 @@ io.on("connection", (socket) => {
   };
 
   socket.on("request_to_play", (data) => {
+
     const currentUser = allUsers[socket.id];
+
     currentUser.playerName = data.playerName;
+    currentUser.playing = false;
 
     let opponentPlayer;
 
@@ -83,6 +86,9 @@ io.on("connection", (socket) => {
         player1: opponentPlayer,
         player2: currentUser,
       });
+
+      currentUser.playing = true;
+      opponentPlayer.playing = true;
 
       currentUser.socket.emit("OpponentFound", {
         opponentName: opponentPlayer.playerName,
@@ -105,6 +111,7 @@ io.on("connection", (socket) => {
           ...data,
         });
       });
+
     } else {
       currentUser.socket.emit("OpponentNotFound");
     }
